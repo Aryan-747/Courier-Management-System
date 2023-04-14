@@ -80,6 +80,7 @@ int main() {
                 break;
             case 7:
                 read_records();
+                break;
             case 0:
                 printf("Exiting the program...\n");
                 break;
@@ -280,6 +281,7 @@ void read_records() {
     while (fscanf(fp, "%[^,],%[^,],%[^,],%f,%f\n", db[num_records].name, db[num_records].address, db[num_records].phone, &db[num_records].weight, &db[num_records].cost) != EOF) {
         num_records++;
     }
+    printf("File Sucessfully Read.\n");
     fclose(fp);
 }
 
