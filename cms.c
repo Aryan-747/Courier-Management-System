@@ -169,7 +169,7 @@ void update_delete_record() {
 
     // Prompt the user to enter the name of the record to update or delete
     char name[50];
-    printf("Enter the name of the record to update or delete: ");
+    printf("Enter the Name of the record to update or delete: ");
     scanf("%s", name);
 
     // Search for the record in the database
