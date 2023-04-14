@@ -24,6 +24,7 @@ void search_record();
 void update_delete_record();
 void sort_records();
 void write_records();
+void read_records();
 
 int main() {
 
@@ -53,6 +54,7 @@ int main() {
         printf("4. Update or delete a record\n");
         printf("5. Sort records by weight\n");
         printf("6. Write Database in a Text File\n");
+        printf("7. Read Database From Text File\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -76,6 +78,8 @@ int main() {
             case 6:
                 write_records();
                 break;
+            case 7:
+                read_records();
             case 0:
                 printf("Exiting the program...\n");
                 break;
@@ -199,7 +203,7 @@ void update_delete_record() {
 
     switch (choice) {
         case 1: // Update the record
-            printf("Enter the new address: ");
+            printf("Enter the new City: ");
             scanf("%s", db[index].address);
             printf("Enter the new phone number: ");
             scanf("%s", db[index].phone);
@@ -262,6 +266,20 @@ void write_records()
         fprintf(fp, "%s,%s,%s,%.2f,%.2f\n", db[i].name, db[i].address, db[i].phone, db[i].weight, db[i].cost);
     }
 
+    printf("File Successfully Created\n");
+
+    fclose(fp);
+}
+
+void read_records() {
+    FILE* fp = fopen("cms.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file %s\n", "cms.txt");
+        exit(1);
+    }
+    while (fscanf(fp, "%[^,],%[^,],%[^,],%f,%f\n", db[num_records].name, db[num_records].address, db[num_records].phone, &db[num_records].weight, &db[num_records].cost) != EOF) {
+        num_records++;
+    }
     fclose(fp);
 }
 
